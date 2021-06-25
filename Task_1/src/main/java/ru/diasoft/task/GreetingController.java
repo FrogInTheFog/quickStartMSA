@@ -1,10 +1,11 @@
 package ru.diasoft.task;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.springframework.web.bind.annotation.GetMapping;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class GreetingController {
@@ -12,8 +13,14 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+    private static Logger LOG = LogManager.getLogger(GreetingController.class);
+
+    @RequestMapping("/greeting")
+    @LogExecutionTime
+    public Greeting greeting(
+            @RequestParam(value = "name", defaultValue = "World") String name
+    ) {
+        LOG.info("Request greeting name: {}", name);
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
