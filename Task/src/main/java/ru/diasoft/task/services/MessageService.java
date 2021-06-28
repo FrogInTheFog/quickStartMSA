@@ -1,20 +1,65 @@
 package ru.diasoft.task.services;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.diasoft.task.entiry.Message;
+import ru.diasoft.task.repository.MessageRepository;
+
 
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
-public interface MessageService {
+@Service
+public class MessageService {
 
-    List<Map<String, String>> getAll();
+    private final MessageRepository messageRepository;
 
-    Map<String, String> getOne(@PathVariable String id);
+    @Autowired
+    public MessageService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+        for (int i = 1; i < 4; i++) {
+            Message newMessage = new Message();
+            newMessage.setId((long) i);
+            newMessage.setText("Message text " + i);
+            messageRepository.save(newMessage);
+        }
+    }
 
-    Map<String, String> create(@RequestBody Map<String, String> message);
 
-    Map<String, String> update(@PathVariable String id, @RequestBody Map<String, String> message);
+    @Transactional
+    public Message create(Message message) {
+        return messageRepository.save(message);
+    }
 
-    void delete(@PathVariable String id);
+    @Transactional
+    public Message update(Long id, Message message) {
+        Optional<Message> messageOptional = messageRepository.findById(id);
+        if (messageOptional.isPresent()) {
+            message.setId(id);
+            messageRepository.save(message);
+            return message;
+        }
+        return null;
+    }
+
+    public Message getOne(Long id) {
+        return messageRepository.findById(id).orElse(null);
+    }
+
+    public List<Message> getAll() {
+        return messageRepository.findAll();
+    }
+
+    @Transactional
+    public boolean delete(Long id) {
+        if (messageRepository.existsById(id)) {
+            messageRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
+
 }

@@ -1,0 +1,8 @@
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/services/MessageService.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/entiry/Message.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/repository/MessageRepository.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/Exceptions/NotFoundException.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/controller/MessageController.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/log/LogExecutionTimeAspect.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/LogExecutionTime.java
+/home/owl/Programming/Diasoft/quickStartMSA/Task/src/main/java/ru/diasoft/task/Application.java
