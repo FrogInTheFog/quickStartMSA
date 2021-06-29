@@ -1,8 +1,0 @@
-ru/diasoft/task/entiry/Message.class
-ru/diasoft/task/LogExecutionTime.class
-ru/diasoft/task/Exceptions/NotFoundException.class
-ru/diasoft/task/repository/MessageRepository.class
-ru/diasoft/task/Application.class
-ru/diasoft/task/controller/MessageController.class
-ru/diasoft/task/services/MessageService.class
-ru/diasoft/task/log/LogExecutionTimeAspect.class

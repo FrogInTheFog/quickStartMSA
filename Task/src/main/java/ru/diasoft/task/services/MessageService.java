@@ -18,14 +18,7 @@ public class MessageService {
     @Autowired
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
-        for (int i = 1; i < 4; i++) {
-            Message newMessage = new Message();
-            newMessage.setId((long) i);
-            newMessage.setText("Message text " + i);
-            messageRepository.save(newMessage);
-        }
     }
-
 
     @Transactional
     public Message create(Message message) {

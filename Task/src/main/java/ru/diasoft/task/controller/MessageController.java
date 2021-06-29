@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import ru.diasoft.task.Exceptions.NotFoundException;
 import ru.diasoft.task.LogExecutionTime;
 import ru.diasoft.task.entiry.Message;
 import ru.diasoft.task.services.MessageService;
@@ -37,10 +38,14 @@ public class MessageController {
         return messageService.getAll();
     }
 
-    @GetMapping("{Id}")
+    @GetMapping("{id}")
     @LogExecutionTime
     public Message getOne(@PathVariable Long id){
-        return messageService.getOne(id);
+        Message message = messageService.getOne(id);
+        if (message == null) {
+            throw new NotFoundException();
+        }
+        return message;
     }
 
     @PostMapping

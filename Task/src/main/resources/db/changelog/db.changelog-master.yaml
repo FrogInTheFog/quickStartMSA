@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson.yaml
+  - chageset:
+      id: 1
+      author: imarkin
+      comment: "Create table Messages"
+      changes:
+        - createTable:
+            tableName: Messages
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+              - column:
+                  name: text
+                  type: varchar(150)
+                  constraints:
+                      nullable: false
+
+  - changeset:
+      id: 2
+      author: imarkin
+      comment: "Fill table Messages"
+      changes:
+        - insert:
+            tableName: message
+            columns:
+              - column:
+                  name: text
+                  value: "Message text 1"
+        - insert:
+            tableName: message
+            columns:
+              - column:
+                  name: text
+                  value: "Message text 2"
+        - insert:
+            tableName: message
+            columns:
+              - column:
+                  name: text
+                  value: "Message text 3"
+        - insert:
+            tableName: message
+            columns:
+              - column:
+                  name: text
+                  value: "Message text 4"
