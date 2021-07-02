@@ -21,7 +21,7 @@ import ru.diasoft.task.services.MessageService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/messages/v1.1")
+@RequestMapping("messages")
 public class MessageController {
 
     private final MessageService messageService;
