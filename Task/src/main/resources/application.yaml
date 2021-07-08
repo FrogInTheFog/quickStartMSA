@@ -1,0 +1,18 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+  cloud:
+    stream:
+      binders:
+        binderName:
+          type: kafka
+      bindings:
+        broadcasts:
+          destination: demo
+        directed:
+          destination: demo-p2p
+          group: test-p2p-group
+
+logging:
+  level:
+    ru.diasoft.tutorial.task: INFO
