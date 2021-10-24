@@ -1,30 +1,30 @@
 databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-lesson.yaml
-  - chageset:
-      id: 1
+  - changeSet:
+      id: "1_create_table_Message"
       author: imarkin
-      comment: "Create table Messages"
+      comment: "Create table Message"
       changes:
         - createTable:
-            tableName: Messages
+            tableName: message
             columns:
               - column:
                   name: id
-                  type: BIGINT
+                  type: INT
                   autoIncrement: true
                   constraints:
-                      primaryKey: true
-                      nullable: false
+                    primaryKey: true
+                    nullable: false
               - column:
                   name: text
-                  type: varchar(150)
+                  type: varchar(250)
                   constraints:
-                      nullable: false
+                    nullable: false
 
-  - changeset:
-      id: 2
+  - changeSet:
+      id: "2_fill_table_Message"
       author: imarkin
-      comment: "Fill table Messages"
+      comment: "Fill table Message"
       changes:
         - insert:
             tableName: message
@@ -44,9 +44,3 @@ databaseChangeLog:
               - column:
                   name: text
                   value: "Message text 3"
-        - insert:
-            tableName: message
-            columns:
-              - column:
-                  name: text
-                  value: "Message text 4"

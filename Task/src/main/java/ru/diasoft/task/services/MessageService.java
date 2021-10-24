@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.diasoft.task.entiry.Message;
 import ru.diasoft.task.repository.MessageRepository;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +18,7 @@ public class MessageService {
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
+
 
     @Transactional
     public Message create(Message message) {
@@ -36,11 +36,11 @@ public class MessageService {
         return null;
     }
 
-    public Message getOne(Long id) {
+    public Message findByID(Long id) {
         return messageRepository.findById(id).orElse(null);
     }
 
-    public List<Message> getAll() {
+    public List<Message> findAll() {
         return messageRepository.findAll();
     }
 
